@@ -49,10 +49,6 @@ public class PlanetDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         List<Planet> planets = session.createQuery("from Planet", Planet.class).list();
-        for (Planet planet : planets) {
-            planet.getTicketsToPlanet().size();
-            planet.getTicketsFromPlanet().size();
-        }
         transaction.commit();
         session.close();
         return planets;
