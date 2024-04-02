@@ -1,60 +1,61 @@
 package org.example.crudService;
 
-import org.example.entity.Client;
 import org.example.HibernateUtil;
 import org.example.entity.Ticket;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
 import java.util.List;
 
-public class ClientCrudService {
+
+public class TicketDao {
     private final SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
 
     //create
-    public void save(Client client) {
+    public void save(Ticket ticket) {
         try (Session session = sessionFactory.openSession()){
             Transaction transaction = session.beginTransaction();
-            session.save(client);
+            session.save(ticket);
             transaction.commit();
         }
     }
 
     //read
-    public Client findById(Long id) {
+    public Ticket findById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            return session.get(Client.class, id);
+            return session.get(Ticket.class, id);
         }
     }
 
     // Update
-    public void update(Client client) {
+    public void update(Ticket ticket) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(client);
+            session.update(ticket);
             transaction.commit();
         }
     }
 
     // Delete
-    public void delete(Client client) {
+    public void delete(Ticket ticket) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(client);
+            session.delete(ticket);
             transaction.commit();
         }
     }
 
-    public List<Client> getAllClients(){
+    public List<Ticket> getAllTickets(){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Client> clients = session.createQuery("from Client", Client.class).list();
-        for (Client client : clients) {
-            client.getTickets().size();
+        List<Ticket> tickets = session.createQuery("from Ticket ", Ticket.class).list();
+        for (Ticket ticket : tickets) {
+            ticket.getClient().toString();
+            ticket.getFromPlanetId().toString();
+            ticket.getToPlanetId().toString();
         }
         transaction.commit();
         session.close();
-        return clients;
+        return tickets;
     }
 }

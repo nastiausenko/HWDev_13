@@ -34,8 +34,6 @@ public class Planet {
         return "\nPlanet {" +
                "id='" + id + '\'' +
                ", name='" + name + '\'' +
-               ", ticketsToThisPlanet=" + ticketsToPlanet.size() +
-               ", ticketsFromThisPlanet=" + ticketsFromPlanet.size() +
                "}";
     }
 }

@@ -1,29 +1,29 @@
 package org.example.services;
 
-import org.example.crudService.TicketCrudService;
+import org.example.crudService.TicketDao;
 import org.example.entity.Ticket;
 
 import java.util.List;
 
 public class TicketService {
-    TicketCrudService ticketCrudService = new TicketCrudService();
+    TicketDao ticketDao = new TicketDao();
     public void save(Ticket ticket) {
-       ticketCrudService.save(ticket);
+       ticketDao.save(ticket);
     }
 
     public Ticket findById(Long id) {
-        return ticketCrudService.findById(id);
+        return ticketDao.findById(id);
     }
 
     public void update(Ticket ticket) {
-        ticketCrudService.update(ticket);
+        ticketDao.update(ticket);
     }
 
     public void delete(Ticket ticket) {
-        ticketCrudService.delete(ticket);
+        ticketDao.delete(ticket);
     }
 
     public List<Ticket> getAllTickets() {
-       return ticketCrudService.getAllTickets();
+       return ticketDao.getAllTickets();
     }
 }
